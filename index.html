@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Anniversary!</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #ffd6e8, #fcbad3);
+      background-size: 800% 800%;
+      animation: gradientBG 15s ease infinite;
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+      color: #333;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Magical background canvas */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .card {
+      background: rgba(255, 240, 245, 0.92);
+      border-radius: 25px;
+      padding: 50px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      color: #d63384;
+      text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff85c1;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff85c1; }
+      to { text-shadow: 0 0 20px #ff66b2, 0 0 40px #ff4da6; }
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .heart {
+      font-size: 70px;
+      animation: beat 1s infinite;
+      color: red;
+      margin: 20px 0;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .button {
+      background: linear-gradient(45deg, #ff6bcb, #d63384);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px #ff9ecf; }
+      50% { box-shadow: 0 0 30px #ff4da6; }
+      100% { box-shadow: 0 0 15px #ff9ecf; }
+    }
+
+    #hidden-message {
+      display: none;
+      margin-top: 30px;
+      font-size: 22px;
+      color: #d63384;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+
+    .typewriter {
+      display: inline-block;
+      border-right: 3px solid #d63384;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 5s steps(60, end), blink .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #d63384; }
+    }
+
+    .slideshow-container {
+      margin: 30px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      background: white;
+      padding: 30px;
+    }
+
+    .slides {
+      display: none;
+      font-size: 19px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .fade {
+      animation: fadeEffect 1.5s;
+    }
+    @keyframes fadeEffect {
+      from {opacity: 0.4} 
+      to {opacity: 1}
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .next { right: 15px; }
+    .prev { left: 15px; }
+    .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+
+    .dots { text-align: center; margin-top: 15px; }
+    .dot {
+      cursor: pointer;
+      height: 14px;
+      width: 14px;
+      margin: 0 6px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .active, .dot:hover { background-color: #d63384; }
+
+    .rose {
+      position: fixed;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      from { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Magical background canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="card">
+    <h1>Happy Anniversary, My Love ❤️</h1>
+    <p>Even though we’re far apart, you’re always close to my heart.</p>
+    <div class="heart">💖</div>
+
+    <div class="slideshow-container">
+      <div class="slides fade">My love, on this special day, I just want to remind you how much you mean to me. Every moment we’ve shared—whether in laughter or in silence—has been a treasure. (TBH EH TAGALAN AKO D2 LIKE 3DAYS KO GINAWA MALALAMAN MO WHY DAMING ERROR)</div>
+      <div class="slides fade">Distance may keep us apart physically, but my heart has never been closer to yours. I carry you with me in everything I do, every single day.</div>
+      <div class="slides fade">Thank you for loving me, for being patient, and for believing in us. You are my greatest blessing, my safe place, and my forever. Hopee youuu continuee thisssss!!!</div>
+      <div class="slides fade">I can’t wait for the day we no longer count the miles between us. Until then, know that my love for you grows stronger with each sunrise. Hulog kana ba saken? ayy</div>
+      <div class="slides fade">We fight together ulit before we celeb our 1y anniversary. Hope you answer me too like September 25, when you said "no"—na ayaw mo na magka-hiwalay tayo. So pleaseee, I love youu babeeeee.</div>
+      <div class="slides fade">Happy Anniversary, my love. Here’s to us, to our story, and to the endless tomorrows we’ll share. 💕</div>
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+      <span class="dot" onclick="currentSlide(6)"></span>
+    </div>
+
+    <button class="button" onclick="showMessage()">Click for a Surprise</button>
+    <p id="hidden-message"></p>
+  </div>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function showMessage() {
+      let msg = document.getElementById("hidden-message");
+      msg.style.display = "block";
+      msg.innerHTML = `<span class="typewriter">I WILL FOREVER BE WITH YOU, MY LOVE ❤️ AVRIL JUNTILLA 💌</span>`;
+
+      for (let i = 0; i < 20; i++) {
+        let rose = document.createElement("div");
+        rose.classList.add("rose");
+        rose.innerHTML = "🌹";
+        rose.style.left = Math.random() * window.innerWidth + "px";
+        rose.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(rose);
+        setTimeout(() => rose.remove(), 5000);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.innerHTML = "❤️";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 900);
+
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";  
+      for (let i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    setInterval(() => { plusSlides(1); }, 8000);
+
+    // Magical background animation
+    const canvas = document.getElementById("bg-canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const hearts = [];
+
+    function createParticles() {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speedY: Math.random() * 1 + 0.5
+      });
+    }
+
+    function createFloatingHearts() {
+      hearts.push({
+        x: Math.random() * canvas.width,
+        y: canvas.height + 20,
+        size: Math.random() * 20 + 20,
+        speedY: Math.random() * 1 + 0.5,
+        opacity: Math.random() * 0.5 + 0.5
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "rgba(255,255,255,0.8)";
+      particles.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.speedY;
+        if (p.y < 0) particles.splice(i, 1);
+      });
+
+      hearts.forEach((h, i) => {
+        ctx.font = h.size + "px Arial";
+        ctx.fillStyle = "rgba(255,0,100," + h.opacity + ")";
+        ctx.fillText("❤️", h.x, h.y);
+        h.y -= h.speedY;
+        if (h.y < -50) hearts.splice(i, 1);
+      });
+    }
+
+    function animate() {
+      draw();
+      requestAnimationFrame(animate);
+    }
+
+    setInterval(createParticles, 150);
+    setInterval(createFloatingHearts, 1000);
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
